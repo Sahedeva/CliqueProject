@@ -41,7 +41,7 @@ router.get('/user_form', function(req, res, next) {
 });
 
 /* Show one user */
-router.get('/showOneUser', function(req, res, next){
+router.post('/showOneUser', function(req, res, next){
 	var id = req.body;
 	console.log(id);
 	res.json("this is what you sent",id);
