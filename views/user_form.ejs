@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/">Home</a>
+    <a href="/clique_form">Cliques Form</a>
+    <div class="container-fluid">
+        <div class="venue_stats new_admin">
+            <br>
+            <form class="new_user_form" name="new_user_form" action="/new_user" method="POST">
+               	<input type="text" name="name" placeholder="User/Artist Name...">
+               	<br><br>
+               	<select name="access_drop">
+					<option value="admin">Admin</option>
+					<option value="artist">Artist</option>
+					<option value="user">User</option>
+				</select>
+               	<br><br>
+               	<% for (var i = 0; i<clique.length;i++){ %>
+               		<input type="checkbox" name="cliques" value="<%= clique[i]['_id'] %>"><%= clique[i]['name'] %><br>
+                <% } %>
+               	<br><br>
+               	<input type="text" name="avatar_url" placeholder="Avatar URL...">
+               	<br><br>
+               	<input type="tel" name="phone" placeholder="Phone number...">
+               	<br><br>
+               	<nav class="navbar navbar-default navbar-fixed-bottom">
+                  	<div class="footbox">
+                     	<input class="submit-btn" type="submit" name="submit" value="Submit">
+                  	</div>
+               	</nav>
+            </form>
+        </div>
+    </div>
+
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="/javascripts/new.js"></script>
+  </body>
+</html>

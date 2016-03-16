@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/">Home</a>
+    <a href="/user_form">User Form</a>
+    <div class="container-fluid">
+        <div class="venue_stats new_admin">
+            <br>
+            <form class="new_clique_form" name="new_clique_form" action="/new_clique" method="POST">
+               	<input type="text" name="name" placeholder="Clique Name...">
+               	<br><br>
+               	<select name="genre_drop">
+					<option value="house">House</option>
+					<option value="hip_hop">Hip Hop</option>
+					<option value="electronica">Electronica</option>
+					<option value="jazz">Jazz</option>
+					<option value="rock">Rock</option>
+					<option value="classical">Classical</option>
+					<option value="folk">Folk</option>
+					<option value="trance">Trance</option>
+					<option value="blues">Blues</option>
+					<option value="country_western">Country/Western</option>
+				</select>
+               	<br><br>
+               	<input type="text" name="avatar_url" placeholder="Avatar URL...">
+               	<br><br>
+               	<nav class="navbar navbar-default navbar-fixed-bottom">
+                  	<div class="footbox">
+                     	<input class="submit-btn" type="submit" name="submit" value="Submit">
+                  	</div>
+               	</nav>
+            </form>
+        </div>
+    </div>
+
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="/javascripts/new.js"></script>
+  </body>
+</html>
