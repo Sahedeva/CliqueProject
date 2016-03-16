@@ -42,7 +42,8 @@ router.get('/user_form', function(req, res, next) {
 
 /* Show one user */
 router.post('/showOneUser', function(req, res, next){
-	res.json(req);
+	var id = req;
+	res.json(id);
 });
 
 /* GET clique_form */
