@@ -35,9 +35,9 @@ router.get('/showCliques', function(req, res, next){
 
 /* GET user_form */
 router.get('/user_form', function(req, res, next) {
-	clique = [{_id: 1, name:"SXSW"},{_id: 2, name:"I Love Hip-hop"},{_id: 3, name:"FolkFunk"}];
-	console.log(clique);
+	Clique.find({}, function(err, clique){
   	res.render('user_form', { title: 'User Form', clique: clique });
+  });
 });
 
 /* GET clique_form */
@@ -66,11 +66,24 @@ router.post('/new_user', function(req,res,next){
     	cliques: cliques
   	});
 
-  	new_user.save(function(err) {
+  	new_user.save(function(err, user) {
     if (err) throw err;
 
     console.log('User saved successfully');
+    console.log(user['_id']);
+    for (i=0;i<cliques.length;i++){
+    	Clique.findOne({'_id': cliques[i]}, function(err, clique) {
+    		console.log(clique)
+      	var user_array = clique.user_array;
+      	user_array.push(user['_id']);
+      	clique.user_array = user_array;
+      	clique.save(function(err) {
+            if (err) {
 
+            }
+        });
+      });
+    }
   	});
   res.json(req.body);
 });
@@ -134,6 +147,19 @@ router.post('/new_track', function(req,res,next){
 				for (i=0;i<5;i++){
 					var track_array = cliques[addArray[i]]['track_array'];
 					track_array.push(content_url);
+					for (j=0;j<cliques[addArray[i]]['user_array'].length;j++){
+						User.findOne({'_id': cliques[addArray[i]]['user_array'][j]}, function(err, users) {
+							client.messages.create({ 
+							    to: "+1"+users['phone'], 
+							    from: "+15045562763", 
+							    body: "Hey Bob! One of your clicks got a track added!", 
+							    mediaUrl: "http://farm2.static.flickr.com/1075/1404618563_3ed9a44a3a.jpg",  
+							}, function(err, message) { 
+							    console.log(message.sid); 
+							});
+
+						});
+					}
 					Clique.findOneAndUpdate({'_id': cliques[addArray[i]]['_id']}, {track_array: track_array}, {new: true}, function(err, clique) {
           	console.log("Updated Clique: " + clique);
           	if (err) {
