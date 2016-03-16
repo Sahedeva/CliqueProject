@@ -18,5 +18,6 @@ The app will allow artist to view the cliques that their tracks randomly populat
 
 The fan can see songs in their clique and play them as well as get more detailed artist information and when they do - the artist will get a chance for a more intimate connection via Superphone.
 
-iOS developer - Stephen Looney\n
+iOS developer - Stephen Looney
+
 Mongo/Express/Node developer - Bob Weilbaecher
