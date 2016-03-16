@@ -33,6 +33,56 @@ router.get('/showCliques', function(req, res, next){
 	 });
 });
 
+/* Add track to 5 random cliques */
+router.post('/trackRandomizer', function(req, res, next) {
+	var content_url = req.body.content_url;
+	Clique.find({}, function(err, cliques){
+	    	var cliques_length = cliques.length;
+	    	var addArray = [];
+	    	var cliqueObj = cliques;
+				while (addArray.length < 5) {
+				    var rand_num = Math.floor(Math.random()*10);
+					var same = false;
+					for (i=0;i<addArray.length;i++) {
+					    if (rand_num==addArray[i]) {
+					        same = true;
+					    }
+					}
+					if(same==false){
+					    addArray.push(rand_num);
+					}
+				}
+				console.log(addArray);
+				for (i=0;i<5;i++){
+					var counter = i;
+					var track_array = cliques[addArray[i]]['track_array'];
+					track_array.push(content_url);
+					for (j=0;j<cliques[addArray[i]]['user_array'].length;j++){
+						User.findOne({'_id': cliques[addArray[i]]['user_array'][j]}, function(err, users) {
+							console.log(users);
+							var phone = "+1"+users.phone;
+							var name = users.name;
+							client.messages.create({ 
+							    to: phone, 
+							    from: "+15045562763", 
+							    body: "Hey "+name+"! "+cliqueObj[addArray[counter]]['name']+" got a track added!", 
+							    mediaUrl: cliqueObj[addArray[counter]]['avatar_url'],  
+							}, function(err, message) { 
+							    console.log(message.sid); 
+							});
+
+						});
+					}
+					Clique.findOneAndUpdate({'_id': cliques[addArray[i]]['_id']}, {track_array: track_array}, {new: true}, function(err, clique) {
+          	console.log("Updated Clique: " + clique);
+          	if (err) {
+            	console.log('got an error');
+          	}
+        	});
+				}
+	  	});
+});
+
 /* GET user_form */
 router.get('/user_form', function(req, res, next) {
 	Clique.find({}, function(err, clique){
