@@ -9,6 +9,7 @@
     <p>Welcome to <%= title %></p>
     <a href="/">Home</a>
     <a href="/clique_form">Cliques Form</a>
+    <a href="/track_form">Track Form</a>
     <div class="container-fluid">
         <div class="venue_stats new_admin">
             <br>
@@ -16,10 +17,10 @@
                	<input type="text" name="name" placeholder="User/Artist Name...">
                	<br><br>
                	<select name="access_drop">
-					<option value="admin">Admin</option>
-					<option value="artist">Artist</option>
-					<option value="user">User</option>
-				</select>
+        					<option value="admin">Admin</option>
+        					<option value="artist">Artist</option>
+        					<option value="user">User</option>
+        				</select>
                	<br><br>
                	<% for (var i = 0; i<clique.length;i++){ %>
                		<input type="checkbox" name="cliques" value="<%= clique[i]['_id'] %>"><%= clique[i]['name'] %><br>

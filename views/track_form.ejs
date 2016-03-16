@@ -8,12 +8,13 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
     <a href="/">Home</a>
-    <a href="/clique_form">Track Form</a>
+    <a href="/user_form">User Form</a>
+    <a href="/clique_form">Cliques Form</a>
     <div class="container-fluid">
         <div class="venue_stats new_admin">
             <br>
             <form class="new_track_form" name="new_track_form" action="/new_track" method="POST">
-               	<input type="text" name="name" placeholder="Song Title...">
+               	<input type="text" name="song_title" placeholder="Song Title...">
                	<br><br>
                 <input type="text" name="content_url" placeholder="Sound Cloud URL...">
                 <br><br>
