@@ -42,6 +42,7 @@ router.get('/user_form', function(req, res, next) {
 
 /* Show one user */
 router.post('/showOneUser', function(req, res, next){
+	console.log(req);
 	var id = req.id;
 	User.findOne({'_id': id}, function(err, user) {
 	 	res.json(user);
