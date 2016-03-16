@@ -5,16 +5,7 @@ var cliqueSchema = new mongoose.Schema({
   avatar_url: String,
   user_array: Array,
   track_array: Array,
-  house: Boolean,
-  hip_hop: Boolean,
-  electronica: Boolean,
-  jazz: Boolean,
-  rock: Boolean,
-  classical: Boolean,
-  folk: Boolean,
-  country_western: Boolean,
-  trance: Boolean,
-  blues: Boolean,
+  genre: String,
   created_at: Date,
   updated_at: Date
 });

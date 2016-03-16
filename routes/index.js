@@ -47,5 +47,26 @@ router.post('/new_user', function(req,res,next){
   res.json(req.body);
 });
 
+/* POST clique_form */
+router.post('/new_clique', function(req,res,next){
+	console.log(req.body);
+	var name = req.body.name;
+	var genre = req.body.genre_drop;
+	var avatar_url = req.body.avatar_url;
+	var new_clique = new Clique({
+    	name: name, 
+    	genre: genre, 
+    	avatar_url: avatar_url,
+  	});
+
+  	new_clique.save(function(err) {
+    if (err) throw err;
+
+    console.log('Clique saved successfully');
+
+  	});
+  res.json(req.body);
+});
+
 
 module.exports = router;
