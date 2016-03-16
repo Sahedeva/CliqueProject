@@ -68,5 +68,29 @@ router.post('/new_clique', function(req,res,next){
   res.json(req.body);
 });
 
+/* POST track_form */
+router.post('/new_track', function(req,res,next){
+	console.log(req.body);
+	var song_title = req.body.song_title;
+	var content_url = req.body.content_url;
+	var avatar_url = req.body.avatar_url;
+	var artist_name = req.body.artist_name;
+	var artist_id = req.body.artist_id;
+	var new_track = new Track({
+    	song_title: song_title, 
+    	content_url: content_url, 
+    	avatar_url: avatar_url,
+    	artist_name: artist_name,
+    	artist_id: artist_id
+  	});
+
+  	new_track.save(function(err) {
+    if (err) throw err;
+
+    console.log('Track saved successfully');
+
+  	});
+  res.json(req.body);
+});
 
 module.exports = router;

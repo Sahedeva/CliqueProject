@@ -5,7 +5,7 @@ var trackSchema = new mongoose.Schema({
   avatar_url: String,
   song_title: String,
   artist_name: String,
-  tracks: Array,
+  artist_id: String,
   likes: Number,
   created_at: Date,
   updated_at: Date
