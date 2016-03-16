@@ -26,7 +26,7 @@ var client = require('twilio')(accountSid, authToken);
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Clique' });
 });
-
+/* Show all cliques */
 router.get('/showCliques', function(req, res, next){
 	 Clique.find({}, function(err, cliques){
 	 	res.json(cliques);
@@ -38,6 +38,13 @@ router.get('/user_form', function(req, res, next) {
 	Clique.find({}, function(err, clique){
   	res.render('user_form', { title: 'User Form', clique: clique });
   });
+});
+
+/* Show one user */
+router.get('/showOneUser', function(req, res, next){
+	var id = req;
+	console.log(id);
+	res.json(req);
 });
 
 /* GET clique_form */
