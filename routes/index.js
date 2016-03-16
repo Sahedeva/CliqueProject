@@ -22,6 +22,11 @@ router.get('/clique_form', function(req, res, next) {
   res.render('clique_form', { title: 'Clique Form' });
 });
 
+/* GET track_form */
+router.get('/track_form', function(req, res, next) {
+  res.render('track_form', { title: 'Track Form' });
+});
+
 /* POST user_form */
 router.post('/new_user', function(req,res,next){
 	console.log(req.body);
