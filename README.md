@@ -10,9 +10,9 @@ The goal of this app is to have a clique expand it's horizons. When new tracks a
 
 This app combines iOS Native app with an express/node.js API backend and a mongo database.
 
-The **Superphone api** was used in order for the artist to have a more intimate connection with their (hopefully) new superfans.
+The **Superphone api**__ was used in order for the artist to have a more intimate connection with their (hopefully) new superfans.
 
-The **Twillio api** was used so that music lovers are informed when new tracks hit their cliques.
+The **Twillio api**__ was used so that music lovers are informed when new tracks hit their cliques.
 
 The app will allow artist to view the cliques that their tracks randomly populate to as well as have a central page where they can upload and "share" new hits.
 
