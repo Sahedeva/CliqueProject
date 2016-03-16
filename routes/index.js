@@ -5,9 +5,32 @@ var Clique = require('../models/clique');
 var Track = require('../models/track');
 var mongoose = require('mongoose');
 
+// Download the Node helper library from twilio.com/docs/node/install
+// These vars are your accountSid and authToken from twilio.com/user/account
+var accountSid = 'ACf3f47245558bab8ef0ad24f5f4c464d0';
+var authToken = "f5e95817975c0d7d9635ca0e14058113";
+var client = require('twilio')(accountSid, authToken);
+
+//require the Twilio module and create a REST client 
+ 
+// client.messages.create({ 
+//     to: "+15047290928", 
+//     from: "+15045562763", 
+//     body: "Hey Jenny! Good luck on the bar exam!", 
+//     mediaUrl: "http://farm2.static.flickr.com/1075/1404618563_3ed9a44a3a.jpg",  
+// }, function(err, message) { 
+//     console.log(message.sid); 
+// });
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Clique' });
+});
+
+router.get('/showCliques', function(req, res, next){
+	 Clique.find({}, function(err, cliques){
+	 	res.json(cliques);
+	 });
 });
 
 /* GET user_form */
@@ -107,6 +130,7 @@ router.post('/new_track', function(req,res,next){
 					    addArray.push(rand_num);
 					}
 				}
+				console.log(addArray);
 				for (i=0;i<5;i++){
 					var track_array = cliques[addArray[i]]['track_array'];
 					track_array.push(content_url);
