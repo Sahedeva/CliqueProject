@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <a href="/">Home</a>
+    <a href="/clique_form">Track Form</a>
+    <div class="container-fluid">
+        <div class="venue_stats new_admin">
+            <br>
+            <form class="new_track_form" name="new_track_form" action="/new_track" method="POST">
+               	<input type="text" name="name" placeholder="Song Title...">
+               	<br><br>
+                <input type="text" name="content_url" placeholder="Sound Cloud URL...">
+                <br><br>
+               	<input type="text" name="avatar_url" placeholder="Avatar URL...">
+               	<br><br>
+               	<input type="text" name="artist_name" placeholder="Artist Name...">
+                <br><br>
+                <input type="text" name="artist_id" placeholder="Artist Id...">
+                <br><br>
+               	<nav class="navbar navbar-default navbar-fixed-bottom">
+                  	<div class="footbox">
+                     	<input class="submit-btn" type="submit" name="submit" value="Submit">
+                  	</div>
+               	</nav>
+            </form>
+        </div>
+    </div>
+
+   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+   <script src="/javascripts/new.js"></script>
+  </body>
+</html>
