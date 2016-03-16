@@ -131,6 +131,7 @@ router.post('/new_track', function(req,res,next){
 	    Clique.find({}, function(err, cliques){
 	    	var cliques_length = cliques.length;
 	    	var addArray = [];
+	    	var cliqueObj = cliques;
 				while (addArray.length < 5) {
 				    var rand_num = Math.floor(Math.random()*10);
 					var same = false;
@@ -145,15 +146,19 @@ router.post('/new_track', function(req,res,next){
 				}
 				console.log(addArray);
 				for (i=0;i<5;i++){
+					var counter = i;
 					var track_array = cliques[addArray[i]]['track_array'];
 					track_array.push(content_url);
 					for (j=0;j<cliques[addArray[i]]['user_array'].length;j++){
 						User.findOne({'_id': cliques[addArray[i]]['user_array'][j]}, function(err, users) {
+							console.log(users);
+							var phone = "+1"+users.phone;
+							var name = users.name;
 							client.messages.create({ 
-							    to: "+1"+users['phone'], 
+							    to: phone, 
 							    from: "+15045562763", 
-							    body: "Hey Bob! One of your clicks got a track added!", 
-							    mediaUrl: "http://farm2.static.flickr.com/1075/1404618563_3ed9a44a3a.jpg",  
+							    body: "Hey "+name+"! "+cliqueObj[addArray[counter]]['name']+" got a track added!", 
+							    mediaUrl: cliqueObj[addArray[counter]]['avatar_url'],  
 							}, function(err, message) { 
 							    console.log(message.sid); 
 							});
