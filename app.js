@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect(process.env.MONGOLAB_DB_CONN_URI3);
+mongoose.connect(process.env.MONGOLAB_URI3);
 app.set('superSecret', config.secret);
 
 app.use('/', routes);
